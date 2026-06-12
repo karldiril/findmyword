@@ -1,3 +1,6 @@
+package model;
+
+
 public class Word {
     public static final int TAILLE_MOT = 5;
 
