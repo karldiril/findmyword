@@ -1,0 +1,11 @@
+*.class
+
+.DS_Store
+.AppleDouble
+.LSOverride
+
+.vscode/
+*.code-workspace
+
+!jar/wordset.jar
+!data/mots.json
