@@ -2,7 +2,7 @@ package repository;
 
 import model.Word;
 
-public class FixedWordRepository {
+public class FixedWordRepository extends WordRepository {
     private final String motFixe;
 
     public FixedWordRepository(String motFixe) {
