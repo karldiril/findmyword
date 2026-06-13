@@ -3,6 +3,10 @@ package model;
 
 public class Word {
     public static final int TAILLE_MOT = 5;
+    public static final int VALIDE = 0;
+    public static final int ERREUR_LONGUEUR = 1;
+    public static final int ERREUR_CARACTERE = 2;
+    public static final int ERREUR_DOUBLON = 3;
 
     private String texte;
 
@@ -15,8 +19,17 @@ public class Word {
     }
 
 
-    public boolean estValide() {
-        return aBonneLongueur() && contientUniquementLettres() && aLettresUniques();
+    public int verifierValidite() {
+        if (!aBonneLongueur()) {
+            return ERREUR_LONGUEUR;
+        }
+        if (!contientUniquementLettres()) {
+            return ERREUR_CARACTERE;
+        }
+        if (!aLettresUniques()) {
+            return ERREUR_DOUBLON;
+        }
+        return VALIDE;
     }
 
 
