@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import model.Word;
 import model.Joueur;
+import model.ResultatPartie;
 
 
 public class GameUI {
@@ -74,10 +75,25 @@ public class GameUI {
     }
 
 
-    public void afficherResultatsFinaux(ArrayList<Joueur> joueurs) {
-        System.out.println("\n==== Resultats Finaux ===");
-        for (Joueur j : joueurs) {
-            System.out.println("Joueur : " + j.getNom() + " | Score : " + j.getScoreGlobal());
-        }
+    public void afficherResultat(ResultatPartie resultat) {
+    System.out.println("\n=== RÉCAPITULATIF DE LA PARTIE ===");
+    System.out.println("Mode de jeu : " + resultat.getModeJeu());
+    System.out.println("Mot secret  : " + resultat.getMotSecret().toUpperCase());
+    
+    // Affichage conditionnel pour le résultat (GAGNÉ/PERDU)
+    if (resultat.estTrouve()) {
+        System.out.println("Résultat : GAGNÉ");
+    } else {
+        System.out.println("Résultat : PERDU");
     }
+
+    // Affichage conditionnel selon le mode
+    if (resultat.getModeJeu().equals("POINT")) {
+        System.out.println("Score       : " + resultat.getScoreObtenu());
+    } else {
+        System.out.println("Temps passé : " + (resultat.getTempsPasse() / 1000) + " secondes");
+    }
+    
+    System.out.println("==================================");
+}
 }
