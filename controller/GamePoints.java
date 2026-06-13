@@ -10,7 +10,7 @@ public class GamePoints extends Game {
     }
 
     public void executerActionAvantSaisie() {
-
+        // Cette classe ne fait pas d'actions avant saisie
     }
 
     public void verifierFinDeTour(int numEssai, boolean aTrouve) {
