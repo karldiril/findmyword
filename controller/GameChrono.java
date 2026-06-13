@@ -26,4 +26,9 @@ public class GameChrono extends Game {
             getJoueur().ajouterTemps(tempsEcouleMs);
         }
     }
+
+
+    public String getNomMode() {
+        return "CHRONO";
+    }
 }

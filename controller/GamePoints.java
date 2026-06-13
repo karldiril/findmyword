@@ -28,5 +28,9 @@ public class GamePoints extends Game {
         int pointsGagnes = (getMaxEssais() - numEssai + 1) * 10;
         getJoueur().ajouterPoints(pointsGagnes);
     }
+
+    public String getNomMode() {
+        return "POINT";
+    }
 }
 

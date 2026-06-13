@@ -85,4 +85,5 @@ public abstract class Game {
 
     public abstract void executerActionAvantSaisie();
     public abstract void verifierFinDeTour(int numEssai, boolean aTrouve);
+    public abstract String getNomMode();
 }
