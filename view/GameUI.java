@@ -146,7 +146,7 @@ public class GameUI {
     }
 
     public void afficherManche(int tour, int nbTours) {
-        System.out.println("\\n=== MANCHE \" + tour + \" SUR \" + nbTours + \" ===");
+        System.out.println("\n=== MANCHE " + tour + " SUR " + nbTours + " ===");
     }
 
     public void afficherTourJoueur(int numeroJoueur) {
