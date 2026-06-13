@@ -80,24 +80,63 @@ public class GameUI {
 
 
     public void afficherResultat(ResultatPartie resultat) {
-    System.out.println("\n=== RÉCAPITULATIF DE LA PARTIE ===");
-    System.out.println("Mode de jeu : " + resultat.getModeJeu());
-    System.out.println("Mot secret  : " + resultat.getMotSecret().toUpperCase());
-    
-    // Affichage conditionnel pour le résultat (GAGNÉ/PERDU)
-    if (resultat.estTrouve()) {
-        System.out.println("Résultat : GAGNÉ");
-    } else {
-        System.out.println("Résultat : PERDU");
+        System.out.println("\n=== RÉCAPITULATIF DE LA PARTIE ===");
+        System.out.println("Mode de jeu : " + resultat.getModeJeu());
+        System.out.println("Mot secret  : " + resultat.getMotSecret().toUpperCase());
+        
+        // Affichage conditionnel pour le résultat (GAGNÉ/PERDU)
+        if (resultat.estTrouve()) {
+            System.out.println("Résultat : GAGNÉ");
+        } else {
+            System.out.println("Résultat : PERDU");
+        }
+
+        // Affichage conditionnel selon le mode
+        if (resultat.getModeJeu().equals("POINT")) {
+            System.out.println("Score       : " + resultat.getScoreObtenu());
+        } else {
+            System.out.println("Temps passé : " + (resultat.getTempsPasse() / 1000) + " secondes");
+        }
+        System.out.println("==================================");
     }
 
-    // Affichage conditionnel selon le mode
-    if (resultat.getModeJeu().equals("POINT")) {
-        System.out.println("Score       : " + resultat.getScoreObtenu());
-    } else {
-        System.out.println("Temps passé : " + (resultat.getTempsPasse() / 1000) + " secondes");
+    public int demanderNbJoueurs() {
+        int choix = 0;
+        while (choix != 1 && choix != 2) {
+            System.out.print("A combien souhaitez vous jouer ? (1 ou 2 joueurs) : ");
+            if (scanner.hasNextInt()) {
+                choix = scanner.nextInt();
+                scanner.nextLine();
+            }
+            else {
+                scanner.nextLine();
+            }
+        }
+        return choix;
     }
-    
-    System.out.println("==================================");
-}
+
+
+    public String demanderModeDeJeu() {
+        String mode = "";
+        while (!mode.equals("POINT") && !mode.equals("CHRONO")) {
+            System.out.print("Choisir le mode de jeu (POINT / CHRONO) : ");
+            mode = scanner.nextLine().toUpperCase();
+        }
+        return mode;
+    }
+
+    public int demanderNbTours() {
+        int tours = 0;
+        while (tours != 1 && tours != 5 && tours != 10 && tours != 20) {
+            System.out.print("Nombre de tours (1, 5, 10, 20) : ");
+            if (scanner.hasNextInt()) {
+                tours = scanner.nextInt();
+                scanner.nextLine();
+            }
+            else {
+                scanner.nextLine();
+            }
+        }
+        return tours;
+    }
 }
