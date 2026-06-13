@@ -3,6 +3,7 @@ package view;
 import java.util.ArrayList;
 import java.util.Scanner;
 import model.Word;
+import model.Joueur;
 import model.ResultatPartie;
 
 
@@ -150,5 +151,37 @@ public class GameUI {
 
     public void afficherTourJoueur(int numeroJoueur) {
         System.out.println("\nTour du Joueur " + numeroJoueur);
+    }
+
+
+    public void afficherBilanSolo(Joueur joueur, String mode) {
+        System.out.println("\n==================================");
+        System.out.println("          BILAN DU JEU            ");
+        System.out.println("==================================");
+        System.out.println("Joueur : " + joueur.getNom());
+        if (mode.equals("POINT")) {
+            System.out.println("Score final : " + joueur.getScoreGlobal() + " points");
+        } else {
+            System.out.println("Temps total : " + (joueur.getTempsCumule() / 1000) + " secondes");
+        }
+        System.out.println("==================================");
+    }
+
+
+    public void afficherGagnant(Joueur gagnant, boolean egalite, String mode) {
+        System.out.println("\n==================================");
+        System.out.println("          FIN DU TOURNOI          ");
+        System.out.println("==================================");
+        if (egalite) {
+            System.out.println("C'est une ÉGALITÉ PARFAITE !");
+        } else {
+            System.out.println("LE GRAND GAGNANT EST : " + gagnant.getNom().toUpperCase());
+            if (mode.equals("POINT")) {
+                System.out.println("Avec un score de : " + gagnant.getScoreGlobal() + " points !");
+            } else {
+                System.out.println("Avec un temps total de : " + (gagnant.getTempsCumule() / 1000) + " secondes !");
+            }
+        }
+        System.out.println("==================================");
     }
 }
