@@ -21,11 +21,8 @@ public class GameChrono extends Game {
         long tempsEcouleMs = (System.currentTimeMillis() - this.tempsDebut);
 
 
-        if (tempsEcouleMs > TEMPS_MAX_MS) {
-            tempsEcouleMs = TEMPS_MAX_MS;
-        }
 
-        if (tempsEcouleMs > TEMPS_MAX_MS || aTrouve || numEssai >= getMaxEssais()) {
+        if (tempsEcouleMs > TEMPS_MAX_MS || aTrouve) {
             setPartieTerminee(true);
             getJoueur().ajouterTemps(tempsEcouleMs);
         }
