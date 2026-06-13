@@ -23,6 +23,7 @@ public class App {
         int nbTours = ui.demanderNbTours();
         
         WordRepository repo = new JsonWordRepository("data/mots.json");
+        // WordRepository repo = new FixedWordRepository("teste"); // Pour tester le jeu
         
         // Création des objets Joueur
         Joueur[] joueurs = new Joueur[nbJoueurs];
