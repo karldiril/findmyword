@@ -5,7 +5,7 @@ import repository.WordRepository;
 
 public class GameChrono extends Game {
     private long tempsDebut;
-    private final int TEMPS_MAX_SECONDES = 30;
+    private final long TEMPS_MAX_MS = 30000L;
 
     public GameChrono(WordRepository repo, Joueur joueur) {
         super(repo, joueur);
@@ -19,16 +19,25 @@ public class GameChrono extends Game {
 
     public void verifierFinDeTour(int numEssai, boolean aTrouve) {
         long tempsEcouleMs = (System.currentTimeMillis() - this.tempsDebut);
-        long tempsEcouleSecondes = tempsEcouleMs / 1000;
 
-        if (tempsEcouleSecondes > TEMPS_MAX_SECONDES || aTrouve || numEssai >= getMaxEssais()) {
+        if (tempsEcouleMs > TEMPS_MAX_MS || aTrouve || numEssai >= getMaxEssais()) {
             setPartieTerminee(true);
             getJoueur().ajouterTemps(tempsEcouleMs);
         }
     }
 
-
     public String getNomMode() {
         return "CHRONO";
+    }
+
+    public long getTempsRestant() {
+        if (this.tempsDebut == 0) {
+            return TEMPS_MAX_MS; 
+        }
+        
+        long tempsEcouleMs = System.currentTimeMillis() - this.tempsDebut;
+        long tempsRestantMs = TEMPS_MAX_MS - tempsEcouleMs;
+        
+        return Math.max(0, tempsRestantMs);
     }
 }
