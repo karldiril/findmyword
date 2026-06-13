@@ -139,4 +139,16 @@ public class GameUI {
         }
         return tours;
     }
+
+    public void afficherMessage(String message) {
+        System.out.println(message);
+    }
+
+    public void afficherManche(int tour, int nbTours) {
+        System.out.println("\\n=== MANCHE \" + tour + \" SUR \" + nbTours + \" ===");
+    }
+
+    public void afficherTourJoueur(int numeroJoueur) {
+        System.out.println("\nTour du Joueur " + numeroJoueur);
+    }
 }
