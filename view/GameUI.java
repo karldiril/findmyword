@@ -3,7 +3,6 @@ package view;
 import java.util.ArrayList;
 import java.util.Scanner;
 import model.Word;
-import model.Joueur;
 import model.ResultatPartie;
 
 
@@ -61,6 +60,11 @@ public class GameUI {
             }
             System.out.println();
         }
+    }
+
+    public void afficherTempsRestant(long tempsRestantMs) {
+        long secondes = tempsRestantMs / 1000;
+        System.out.println("Temps restant : " + secondes + " secondes.");
     }
 
     public void afficherFinPartie(boolean gagne, Word motSecret) {
