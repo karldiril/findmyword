@@ -20,6 +20,11 @@ public class GameChrono extends Game {
     public void verifierFinDeTour(int numEssai, boolean aTrouve) {
         long tempsEcouleMs = (System.currentTimeMillis() - this.tempsDebut);
 
+
+        if (tempsEcouleMs > TEMPS_MAX_MS) {
+            tempsEcouleMs = TEMPS_MAX_MS;
+        }
+
         if (tempsEcouleMs > TEMPS_MAX_MS || aTrouve || numEssai >= getMaxEssais()) {
             setPartieTerminee(true);
             getJoueur().ajouterTemps(tempsEcouleMs);
