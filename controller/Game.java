@@ -11,15 +11,14 @@ public abstract class Game {
     private WordRepository repository;
     private ArrayList<Word> tentatives = new ArrayList<>();
     private ArrayList<String[]> analyses = new ArrayList<>();
-    private ArrayList<Joueur> joueurs;
     private int maxEssais = 6;
-    private int indexJoueurActuel = 0;
+    private Joueur joueur;
     private boolean partieTerminee = false;
 
 
-    public Game(WordRepository repo, ArrayList<Joueur> listeJoueurs) {
+    public Game(WordRepository repo, Joueur joueur) {
         this.repository = repo;
-        this.joueurs = listeJoueurs;
+        this.joueur = joueur;
         this.motSecret = this.repository.getWord();
     }
 
@@ -36,16 +35,12 @@ public abstract class Game {
         return this.analyses;
     }
 
-    public ArrayList<Joueur> getJoueurs() {
-        return this.joueurs;
+    public Joueur getJoueur() {
+        return this.joueur;
     }
 
     public int getMaxEssais() {
         return this.maxEssais;
-    }
-
-    public int getIndexJoueurActuel() {
-        return this.indexJoueurActuel;
     }
 
     public boolean isPartieTerminee() {
@@ -54,12 +49,6 @@ public abstract class Game {
 
     public void setPartieTerminee(boolean etat) {
         this.partieTerminee = etat;
-    }
-
-    public void changerJoueur() {
-        if (this.joueurs != null && !this.joueurs.isEmpty()) {
-            this.indexJoueurActuel = (this.indexJoueurActuel + 1) % this.joueurs.size();
-        }
     }
 
     public String[] analyserTentatives(Word proposition) {
